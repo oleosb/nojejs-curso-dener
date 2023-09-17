@@ -1,3 +1,2 @@
-export const data = "Leo";
-
-console.log(data);
+console.log(123);
+console.log(1234);
