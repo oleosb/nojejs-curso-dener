@@ -1,3 +1,3 @@
-const data = "Leo";
+export const data = "Leo";
 
 console.log(data);
