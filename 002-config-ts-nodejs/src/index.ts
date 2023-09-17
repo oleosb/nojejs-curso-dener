@@ -1,1 +1,3 @@
-console.log(3000);
+const data = "Leo";
+
+console.log(data);
