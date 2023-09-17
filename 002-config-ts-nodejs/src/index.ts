@@ -1,3 +1,1 @@
-import { sum } from "sum";
-
-console.log(sum());
+console.log(3000);
