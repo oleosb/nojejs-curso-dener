@@ -1,8 +1,14 @@
+#!/usr/bin/env node
+//
 import inquirer from 'inquirer';
-//QUESTIONS
+
+// Questions
 import { questions } from 'questions';
-//INTERFACE
+
+// Interface
 import { IAnswers } from 'interface/answers.interface';
+
+// Controller
 import { GenFile } from 'constroller/generate.controller';
 
 class Init {
