@@ -16,7 +16,34 @@ export class CrawlerCorinthiansController {
       const payload: Array<{ link: string; titulo: string; data: string }> = [];
 
       for (const node of nodes) {
-        console.log(node);
+        const link = await page.evaluate((el: Element) => {
+          return el
+            .querySelector('.ct-news-list-item-content a')
+            ?.getAttribute('href');
+        }, node);
+
+        const titulo = await page.evaluate((el: Element) => {
+          return el
+            .querySelector('.ct-news-list-item-content a h4')
+            ?.innerHTML.replace(/\n/g, '')
+            .replace(/<p>.*?<\/p>/g, '')
+            .trim();
+        }, node);
+
+        const data = await page.evaluate((el: Element) => {
+          return el
+            .querySelector('.ct-news-list-item-content a h4 p')
+            ?.innerHTML.replace(/\n/g, '')
+            .replace(/<strong>.*?<\/strong>/g, '')
+            .replace(/-/g, '')
+            .trim();
+        }, node);
+
+        if (!link || !titulo || !data)
+          throw new Error('Estes itens não são válidos');
+
+        payload.push({ link, titulo, data });
+        console.log(payload);
       }
 
       page.close();
