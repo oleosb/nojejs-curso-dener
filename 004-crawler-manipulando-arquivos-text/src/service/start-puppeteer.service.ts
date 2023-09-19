@@ -35,10 +35,7 @@ class StartPuppeteerService {
     const csvContent = `Link;Titulo;Data da Postagem\n${csvRows.join('\n')}`;
 
     try {
-      fs.writeFileSync(
-        `${path.resolve(pathTmp)}/${fileName}.csv`,
-        csvContent,
-      );
+      fs.writeFileSync(`${path.resolve(pathTmp, fileName)}.csv`, csvContent);
       return console.log('Arquivo criado com sucesso');
     } catch (error) {}
   }
