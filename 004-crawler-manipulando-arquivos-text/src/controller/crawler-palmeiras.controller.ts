@@ -8,6 +8,13 @@ export class CrawlerPalmeirasController {
       const page = await startPuppeteerService.start(
         'https://www.palmeiras.com.br/central-de-midia/noticias',
       );
+
+      const selector = '.central-de-midia-container .items-central';
+      await page?.waitForSelector(selector);
+
+      const nodes = await page?.$$(selector);
+
+      console.log(nodes);
     } catch (error) {
       console.log(error);
     }
