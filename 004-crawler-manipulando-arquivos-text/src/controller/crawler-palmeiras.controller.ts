@@ -35,7 +35,8 @@ export class CrawlerPalmeirasController {
         payload.push({ link, titulo, data });
       }
 
-      console.log(payload);
+      startPuppeteerService.fileGenerator(payload, '_palmeiras');
+
       page.close();
     } catch (error) {
       console.log(error);

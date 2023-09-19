@@ -44,9 +44,9 @@ export class CrawlerCorinthiansController {
           throw new Error('Estes itens não são válidos');
 
         payload.push({ link, titulo, data });
-        console.log(payload);
       }
 
+      startPuppeteerService.fileGenerator(payload, '_corinthians');
       page.close();
     } catch (error) {
       console.log(error);
