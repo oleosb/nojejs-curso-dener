@@ -1,7 +1,7 @@
 import puppeteer, { Page } from 'puppeteer';
 
 class StartPuppeteerService {
-  public async start(url: string): Promise<Page | undefined> {
+  public async start(url: string): Promise<Page> {
     return new Promise(async (resolve, reject) => {
       const browser = await puppeteer.launch({ headless: false });
       const page = await browser.newPage();

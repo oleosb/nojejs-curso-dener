@@ -10,11 +10,32 @@ export class CrawlerPalmeirasController {
       );
 
       const selector = '.central-de-midia-container .items-central';
-      await page?.waitForSelector(selector);
+      await page.waitForSelector(selector);
 
-      const nodes = await page?.$$(selector);
+      const nodes = await page.$$(selector);
+      const payload: Array<{ link: string; titulo: string; data: string }> = [];
 
-      console.log(nodes);
+      for (const node of nodes) {
+        const link = await page.evaluate((el: Element) => {
+          return el.querySelector('a')?.getAttribute('href');
+        }, node);
+
+        const titulo = await page.evaluate((el: Element) => {
+          return el.querySelector('a .items-central-txt h4')?.textContent;
+        }, node);
+
+        const data = await page.evaluate((el: Element) => {
+          return el.querySelector('a .items-central-date')?.textContent;
+        }, node);
+
+        if (!link || !titulo || !data)
+          throw new Error('Estes itens não são válidos');
+
+        payload.push({ link, titulo, data });
+      }
+
+      console.log(payload);
+      page.close();
     } catch (error) {
       console.log(error);
     }
