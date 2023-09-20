@@ -6,7 +6,11 @@ const eventOla = (message: string, name: string) => {
   console.log(message, name);
 };
 
-//event.addListener('ola', eventOla);
+event.addListener('ola', eventOla);
+event.on('ola', eventOla);
 event.once('ola', eventOla);
 
-event.emit('ola', 'deu bom', 'Leo');
+setInterval(() => {
+  console.log(event.listenerCount('ola'));
+  event.emit('ola', 'deu bom', 'Leo');
+}, 1000);
