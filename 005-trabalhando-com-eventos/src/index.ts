@@ -2,8 +2,11 @@ import { EventEmitter } from 'node:events';
 
 const event = new EventEmitter();
 
-event.addListener('ola', (message, name) => {
-  console.log(2, message, name);
-});
+const eventOla = (message: string, name: string) => {
+  console.log(message, name);
+};
+
+//event.addListener('ola', eventOla);
+event.once('ola', eventOla);
 
 event.emit('ola', 'deu bom', 'Leo');
