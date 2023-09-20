@@ -8,9 +8,11 @@ const eventOla = (message: string, name: string) => {
 
 event.addListener('ola', eventOla);
 event.on('ola', eventOla);
-event.once('ola', eventOla);
+//event.once('ola', eventOla);
 
 setInterval(() => {
-  console.log(event.listenerCount('ola'));
+  console.log('Contador', event.listenerCount('ola'));
   event.emit('ola', 'deu bom', 'Leo');
+  //event.removeListener('ola', eventOla);
+  event.removeAllListeners('ola');
 }, 1000);
