@@ -1,4 +1,4 @@
 import path from 'node:path';
 
-console.log(path.join('outra-pasta', 'Leo'));
-console.log(path.resolve('src', 'pasta'));
+console.log(path.dirname(path.resolve()));
+console.log(path.basename(path.resolve('src')));
