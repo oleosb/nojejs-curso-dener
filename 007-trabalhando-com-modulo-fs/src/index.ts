@@ -20,6 +20,11 @@ try {
     'Novos dados do arquivo: ',
     fs.readFileSync(caminhoArquivo, 'utf-8'),
   );
+
+  fs.renameSync(
+    path.resolve('tmp', 'nova-pasta-01'),
+    path.resolve('tmp', 'nova-pasta-02'),
+  );
 } catch (error) {
   console.log(error);
 }
