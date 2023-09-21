@@ -5,6 +5,11 @@ class Main {
 
   constructor() {
     this._server = express();
+    this._middleware();
+  }
+
+  private _middleware() {
+    this.server.use(express.json());
   }
 
   get server() {
